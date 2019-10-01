@@ -28,9 +28,9 @@ public class mousehover : MonoBehaviour
     }
 
     void OnMouseExit()
-    {
-        //Debug.Log("shrinkanimation: " + shrinkAnimation);
-        if (shrinkAnimation == true)
+    {      
+            //Debug.Log("shrinkanimation: " + shrinkAnimation);
+            if (shrinkAnimation == true)
         {
             StartCoroutine(ScaleDownOverTime(0.5f));
         }     
