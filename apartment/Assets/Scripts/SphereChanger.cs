@@ -3,21 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class SphereChanger : MonoBehaviour {
-
-
-
-    //This object should be called 'Fader' and placed over the camera
-    GameObject m_Fader;
+    public GameObject m_Fader;
 
     //This ensures that we don't mash to change spheres
     bool changing = false;
 
 
     void Awake()
-    {
-
-        //Find the fader object
-        m_Fader = GameObject.Find("Fader");
+    {       
 
         //Check if we found something
         if (m_Fader == null)
