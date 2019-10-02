@@ -29,7 +29,7 @@ public class SphereChanger : MonoBehaviour {
     }
 
     IEnumerator changeSphere(Transform nextSphere)
-    {
+    {       
         yield return new WaitForSeconds(1.2f);
         Camera.main.transform.parent.position = nextSphere.position;
         
