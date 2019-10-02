@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SphereChanger : MonoBehaviour {
     public GameObject m_Fader;
-
+    Animator faderAnimator;
     //This ensures that we don't mash to change spheres
     public bool changing = false;
 
@@ -18,20 +18,22 @@ public class SphereChanger : MonoBehaviour {
 
     }
 
-
-    public void ChangeSphere(Transform nextSphere)
+    void Start()
     {
+        faderAnimator = m_Fader.GetComponent<Animator>();
+    }          
 
-        //Start the fading process
-        StartCoroutine(FadeCamera(nextSphere));
-
+    public void goToSphere(Transform nextSphere) {
+        faderAnimator.SetTrigger("startFading");
+        StartCoroutine(changeSphere(nextSphere));       
     }
 
-    void Update()
+    IEnumerator changeSphere(Transform nextSphere)
     {
-
+        yield return new WaitForSeconds(1.2f);
+        Camera.main.transform.parent.position = nextSphere.position;
+        
     }
-
 
     IEnumerator FadeCamera(Transform nextSphere)
     {

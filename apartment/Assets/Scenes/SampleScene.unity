@@ -281,7 +281,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1852344585}
-        m_MethodName: ChangeSphere
+        m_MethodName: goToSphere
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1016993744}
@@ -468,7 +468,7 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 0, g: 0.754717, b: 0.034860395, a: 1}
+    m_NormalColor: {r: 0.28462085, g: 0.49056602, b: 0.29427454, a: 1}
     m_HighlightedColor: {r: 0.9632838, g: 1, b: 0, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -492,7 +492,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1852344585}
-        m_MethodName: ChangeSphere
+        m_MethodName: goToSphere
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 58026490}
@@ -619,6 +619,7 @@ GameObject:
   - component: {fileID: 875518190}
   - component: {fileID: 875518189}
   - component: {fileID: 875518191}
+  - component: {fileID: 875518192}
   m_Layer: 0
   m_Name: Fader
   m_TagString: Untagged
@@ -704,6 +705,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &875518192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 875518187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8bf734d4360e11649bc748666b1abacf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Fader: {fileID: 875518187}
+  changing: 0
 --- !u!1 &893333186
 GameObject:
   m_ObjectHideFlags: 0
@@ -886,7 +901,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1852344585}
-        m_MethodName: ChangeSphere
+        m_MethodName: goToSphere
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 58026490}
@@ -1014,7 +1029,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_LocalRotation: {x: -0, y: -0.61144936, z: -0, w: 0.7912836}
-  m_LocalPosition: {x: 0.49834442, y: 0, z: 0.38508528}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 875518188}
@@ -1395,7 +1410,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1852344585}
-        m_MethodName: ChangeSphere
+        m_MethodName: goToSphere
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1411797474}
@@ -1582,7 +1597,7 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 0, g: 0.754717, b: 0.034860395, a: 1}
+    m_NormalColor: {r: 0.28462085, g: 0.49056602, b: 0.29427454, a: 1}
     m_HighlightedColor: {r: 0.9632838, g: 1, b: 0, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -1606,7 +1621,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1852344585}
-        m_MethodName: ChangeSphere
+        m_MethodName: goToSphere
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 58026490}
