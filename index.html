@@ -6,9 +6,30 @@
         <title>Apartment Virtual Tour</title>
         <link rel="shortcut icon" href="TemplateData/favicon.ico" />
         <link rel="stylesheet" href="TemplateData/style.css" />
+        <link
+            rel="stylesheet"
+            href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+            integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+            crossorigin="anonymous"
+        />
         <script src="TemplateData/UnityProgress.js"></script>
         <script src="Build/UnityLoader.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script
+            src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"
+        ></script>
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"
+        ></script>
+        <script
+            src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"
+        ></script>
         <script>
             var unityInstance = UnityLoader.instantiate(
                 "unityContainer",
@@ -16,26 +37,61 @@
                 { onProgress: UnityProgress },
             );
 
-            var persons = [
-                { firstname: "Malcom", lastname: "Reynolds" },
-                { firstname: "Kaylee", lastname: "Frye" },
-                { firstname: "Jayne", lastname: "Cobb" },
-            ];
+            // var persons = [
+            //     { firstname: "Malcom", lastname: "Reynolds" },
+            //     { firstname: "Kaylee", lastname: "Frye" },
+            //     { firstname: "Jayne", lastname: "Cobb" },
+            // ];
 
-            var allpeople = persons.map(newFunc);
-            function newFunc(person) {
-                //person is everything looped element
-                console.log(person);
-                return person.firstname + " " + person.lastname;
-            }
+            // var allpeople = persons.map(newFunc);
+            // function newFunc(person) {
+            //     //person is everything looped element
+            //     console.log(person);
+            //     return person.firstname + " " + person.lastname;
+            // }
 
-            document.addEventListener("DOMContentLoaded", function() {
-                document.getElementById("test").innerHTML = allpeople;
-            });
+            // document.addEventListener("DOMContentLoaded", function() {
+            //     document.getElementById("test").innerHTML = allpeople;
+            // });
 
             $(document).ready(function() {
-                for (i = 0; i < 5; i++) {
-                    $("#test2").append("<div class='row'>Test</div>");
+                var apartment = [
+                    {
+                        imgLink:
+                            "https://cdn.vox-cdn.com/thumbor/E0jNRUTI81RBBRMSA_ZU7vq7I4g=/0x0:2400x1602/1200x675/filters:focal(682x772:1066x1156)/cdn.vox-cdn.com/uploads/chorus_image/image/54241701/LINEA_NicholasJamesPhoto_8.0.jpeg",
+                        address: "W 145th St, New York, NY 10031",
+                    },
+                    {
+                        imgLink:
+                            "https://odis.homeaway.com/odis/listing/19b92f30-fcec-4eae-a190-ea3b34dabcc6.f6.jpg",
+                        address: "250 W 50th St, New York, NY 10019",
+                    },
+                    {
+                        imgLink:
+                            "https://www.apartmentlovin.com/wp-content/uploads/2018/10/River-Stone-Apartment-Kiev8-1.jpg",
+                        address: "450 W 17th St, New York, NY 10011",
+                    },
+                    {
+                        imgLink:
+                            "https://cdn.decoist.com/wp-content/uploads/2017/03/Modern-apartment-units-inside-heritage-building-Down-Under.jpg",
+                        address: "66 W 38th St, New York, NY 10018",
+                    },
+                    {
+                        imgLink:
+                            "https://pix10.agoda.net/hotelImages/167/167578/167578_15020923560025224264.jpg?s=1024x768",
+                        address: "8 Spruce St, New York, NY 10038",
+                    },
+                ];
+
+                for (i = 0; i < apartment.length; i++) {
+                    console.log("apartment img: ", apartment[i].imgLink);
+                    $("#card--container").append(`
+                    <div class="card" style="width: 18rem;">
+                      <img src=${apartment[i].imgLink} class="card-img-top" alt="...">
+                      <div class="card-body">
+                        <p class="card-text">${apartment[i].address}</p>
+                      </div>
+                    </div>`);
                 }
             });
         </script>
@@ -43,8 +99,8 @@
     <body>
         <div class="outer--container">
             <div class="left--container">
-                <p>New array: <span id="test"></span></p>
-                <div id="test2"></div>
+                <h1 class="address">New York City</h1>
+                <div class="card--container" id="card--container"></div>
             </div>
             <div>
                 <div class="webgl-content" style="background-color:green">
