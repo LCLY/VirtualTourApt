@@ -8,22 +8,53 @@
         <link rel="stylesheet" href="TemplateData/style.css" />
         <script src="TemplateData/UnityProgress.js"></script>
         <script src="Build/UnityLoader.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script>
             var unityInstance = UnityLoader.instantiate(
                 "unityContainer",
                 "Build/test.json",
                 { onProgress: UnityProgress },
             );
+
+            var persons = [
+                { firstname: "Malcom", lastname: "Reynolds" },
+                { firstname: "Kaylee", lastname: "Frye" },
+                { firstname: "Jayne", lastname: "Cobb" },
+            ];
+
+            var allpeople = persons.map(newFunc);
+            function newFunc(person) {
+                //person is everything looped element
+                console.log(person);
+                return person.firstname + " " + person.lastname;
+            }
+
+            document.addEventListener("DOMContentLoaded", function() {
+                document.getElementById("test").innerHTML = allpeople;
+            });
+
+            $(document).ready(function() {
+                for (i = 0; i < 5; i++) {
+                    $("#test2").append("<div class='row'>Test</div>");
+                }
+            });
         </script>
     </head>
     <body>
-        <div class="webgl-content" style="background-color:green">
-            <div style="background-color: yellow">test</div>
-            <div
-                id="unityContainer"
-                style="width: 800px; height: 600px; background-color: blue"
-            ></div>
-            <div class="footer"></div>
+        <div class="outer--container">
+            <div class="left--container">
+                <p>New array: <span id="test"></span></p>
+                <div id="test2"></div>
+            </div>
+            <div>
+                <div class="webgl-content" style="background-color:green">
+                    <div
+                        id="unityContainer"
+                        style="width: 600px; height: 500px; background-color: blue"
+                    ></div>
+                    <div class="footer" style="background-color: red"></div>
+                </div>
+            </div>
         </div>
     </body>
 </html>
