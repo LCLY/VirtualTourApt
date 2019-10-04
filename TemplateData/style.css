@@ -85,7 +85,6 @@
 
 .outer--container {
     display: flex;
-    background-color: black;
     width: 100%;
     height: 100vh;
 }
@@ -100,6 +99,7 @@
 
 .middle--container {
     width: auto;
+    height: auto;
     overflow-y: scroll;
 }
 
@@ -121,9 +121,12 @@
     align-items: center;
 }
 
+.card--container .card {
+    margin: 1rem 0;
+}
+
 .card {
     margin: 1rem 2rem;
-    border-radius: 30%;
 }
 
 .card--container .card:hover {
@@ -159,4 +162,8 @@
 
 #apt--desc {
     padding-bottom: 2rem;
+}
+
+.middle--bottom {
+    background-color: blue;
 }
