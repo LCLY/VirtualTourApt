@@ -60,32 +60,81 @@
                         imgLink:
                             "https://cdn.vox-cdn.com/thumbor/E0jNRUTI81RBBRMSA_ZU7vq7I4g=/0x0:2400x1602/1200x675/filters:focal(682x772:1066x1156)/cdn.vox-cdn.com/uploads/chorus_image/image/54241701/LINEA_NicholasJamesPhoto_8.0.jpeg",
                         address: "W 145th St, New York, NY 10031",
+                        desc:
+                            "More pictures coming This spacious one bedroom provides an ideal NYC living experience. This apartment is surrounded by a lively neighborhood while being conveniently located to all direct subway lines. Pets allowed",
+                        features: [
+                            "Very spacious closets",
+                            "Enjoy morning runs (or walks) on Brighton Beach Boardwalk across from the apartment!",
+                            "Next to B and Q trains for express commute",
+                            "Various dining, shopping and entertainment options in the surrounding area",
+                            "Live-in super",
+                        ],
                     },
                     {
                         imgLink:
                             "https://odis.homeaway.com/odis/listing/19b92f30-fcec-4eae-a190-ea3b34dabcc6.f6.jpg",
                         address: "250 W 50th St, New York, NY 10019",
+                        desc:
+                            "Placed in the heart of the East Village, just steps from eclectic dining, cafes, boutique shops, and iconic Tompkins Square park. Transportation just a short walk away and Citi-bike on the same block. Brand new renovations and tons of natural light in this apartment.",
+                        features: [
+                            " Queen Size Bedroom w/ Good natural light & Closet Space",
+                            "Spacious Living Room w/ Window & Expose Brick",
+                            "Open Kitchen w/ Island, Stainless Steel Appliances & Dishwasher",
+                            "Renovated Marble Bathroom",
+                            "Steps away from Canal Street Subway",
+                            "Elevator Building",
+                        ],
                     },
                     {
                         imgLink:
                             "https://www.apartmentlovin.com/wp-content/uploads/2018/10/River-Stone-Apartment-Kiev8-1.jpg",
                         address: "450 W 17th St, New York, NY 10011",
+                        desc:
+                            "Theater House is a dramatic 22-story glass tower at the nexus of Manhattan's most convenient neighborhoods, Murray Hill and Kips Bay. The 105 residences consist of studio, one, and two bedroom units featuring condo-like finishes and amenities and ultra contemporary design.",
+                        features: [
+                            " NO BROKER FEE",
+                            "Open layout with room for a couch and entertainment center",
+                            "Updated kitchen with granite countertops",
+                            "Highend appliances (including dishwasher)",
+                            "Marble bathroom",
+                            "Large windows",
+                            "Polished hardwood floors",
+                            "THREE huge of closet space",
+                        ],
                     },
                     {
                         imgLink:
                             "https://cdn.decoist.com/wp-content/uploads/2017/03/Modern-apartment-units-inside-heritage-building-Down-Under.jpg",
                         address: "66 W 38th St, New York, NY 10018",
+                        desc:
+                            "Enjoy the beautiful morning sun from this 629 SF Jr. one Br. apartment in the Corinthian Condominiums. The Corinthian is know for its fabulous service and exceptional amenities. Apartment features: River views, Marble bath, full kitchen, and separate bedroom.",
+                        features: [
+                            "Full service 24hour doorman",
+                            "Beautiful high end lobby",
+                            "State of the art gym next door",
+                            "Laundry on premises",
+                            "Live-in super",
+                        ],
                     },
                     {
                         imgLink:
                             "https://pix10.agoda.net/hotelImages/167/167578/167578_15020923560025224264.jpg?s=1024x768",
                         address: "8 Spruce St, New York, NY 10038",
+                        desc:
+                            "Walk into this spectacular gut-renovated 1 Bedroom apartment and you will know it should be your new home. With natural light cascading through the large South and West facing windows, you will not want to leave once you walk through the door. Located on a quiet tree-lined block just steps from the UN, this apartment is just like living in a brand new home.",
+                        features: [
+                            " 1 Bedroom/ 1 Bathroom",
+                            "Completely renovated with stainless steel appliances WITH dishwasher",
+                            "Tones of natural light",
+                            "Spacious living room ( top floor)",
+                            "Pet friendly",
+                        ],
                     },
                 ];
 
                 for (i = 0; i < apartment.length; i++) {
                     $("#card--container").append(`
-                    <div class="card" id="card" onClick="chgAddress('${apartment[i].address}')" style="width: 18rem;">
+                    <div class="card" id="card" onClick="chgAddress('${apartment[i]}')" style="width: 25rem;">
                       <img src=${apartment[i].imgLink} class="card-img-top" alt="...">
                       <div class="card-body">
                         <p class="card-text">${apartment[i].address}</p>
@@ -94,26 +143,44 @@
                 }
             });
 
-            function chgAddress(address) {
-                $("#address").html(address);
+            function chgAddress(apartment) {
+                console.log("WTF", JSON.stringify(apartment.address));
+                $("#address").html(apartment.address);
             }
         </script>
     </head>
     <body>
         <div class="outer--container">
             <div class="left--container">
-                <h1 class="address" id="address">New York City</h1>
+                <div style="width: 450px; margin-left: 1.5rem">
+                    <h1 class="address" id="address">New York City</h1>
+                </div>
                 <div class="card--container" id="card--container"></div>
             </div>
-            <div>
-                <div class="webgl-content" style="background-color:green">
+            <div class="middle--container">
+                <div class="webgl-content" style="background-color:green;">
                     <div
                         id="unityContainer"
-                        style="width: 600px; height: 500px; background-color: blue"
+                        style="width: 800px; height: 675px; background-color: blue;"
                     ></div>
+                    <div class="apt--details">
+                        <div class="card bg-light mb-3 apt--card">
+                            <div class="card-header">Address</div>
+                            <div class="card-body">
+                                <h5 class="card-title">Brighton Beach</h5>
+                                <p class="card-text" id="apt--desc">
+                                    apt desc
+                                </p>
+                                <h6>Building Features:</h6>
+                                <div id="apt--feature">apt features</div>
+                            </div>
+                        </div>
+                    </div>
                     <div class="footer" style="background-color: red"></div>
                 </div>
             </div>
+
+            <div class="right--container">sup</div>
         </div>
     </body>
 </html>
