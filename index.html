@@ -140,20 +140,27 @@
                 for (i = 0; i < apartment.length; i++) {
                     $("#card--container").append(`
                     <div class="card" id="card" onClick="chgAddress('${apartment[i].address}', '${apartment[i].desc}','${apartment[i].features}', '${apartment[i].category}')" style="width: 25rem;">
-                      <img src=${apartment[i].imgLink} class="card-img-top" alt="...">
-                      <div class="card-body">
-                        <p class="card-text">${apartment[i].address}</p>
-                      </div>
+                        <img src=${apartment[i].imgLink} class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <p class="card-text">${apartment[i].address}</p>
+                        </div>
                     </div>`);
                 }
             });
 
             function chgAddress(address, desc, features, category) {
-                console.log(desc);
+                console.log(features);
+                var res = features.split(",");
+                console.log("res", res);
                 $("#apt--desc").html(desc);
                 $("#address").html(address);
                 $("#apt--category").html(category);
                 $("#card--address").html(address);
+                //empty the html before filling in with the list of strings
+                $("#apt--feature__list").html("");
+                for (i = 0; i < res.length; i++) {
+                    $("#apt--feature__list").append(`<li>${res[i]}</li>`);
+                }
             }
         </script>
     </head>
@@ -197,8 +204,11 @@
                                     lines. Pets allowed
                                 </p>
                                 <h6>Building Features:</h6>
-                                <div id="apt--feature">
-                                    <ul>
+                                <div
+                                    id="apt--feature"
+                                    style="margin-left: 1rem"
+                                >
+                                    <ul id="apt--feature__list">
                                         <li>Very spacious closets</li>
                                         <li>
                                             Enjoy morning runs (or walks) on

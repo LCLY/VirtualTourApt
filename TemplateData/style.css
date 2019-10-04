@@ -103,7 +103,7 @@
     overflow-y: scroll;
 }
 
-.middle--container ::-webkit-scrollbar {
+.middle--container::-webkit-scrollbar {
     display: none;
 }
 
@@ -139,14 +139,13 @@
 
 .apt--details {
     padding-top: 3rem;
-    background-color: pink;
     height: 1000px;
 }
 
 .apt--card {
     margin-left: auto;
     margin-right: auto;
-    width: 40rem;
+    width: 38rem;
 }
 
 .card-title {
@@ -155,5 +154,9 @@
 }
 
 #apt--category {
+    padding-bottom: 2rem;
+}
+
+#apt--desc {
     padding-bottom: 2rem;
 }
