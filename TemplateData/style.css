@@ -148,3 +148,12 @@
     margin-right: auto;
     width: 40rem;
 }
+
+.card-title {
+    font-size: 3rem;
+    padding-bottom: 1.5rem;
+}
+
+#apt--category {
+    padding-bottom: 2rem;
+}
