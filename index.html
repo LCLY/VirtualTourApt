@@ -70,6 +70,8 @@
                             "Various dining, shopping and entertainment options in the surrounding area",
                             "Live-in super",
                         ],
+                        neighborhood: "Upper Manhattan",
+                        rent: "$3150",
                     },
                     {
                         imgLink:
@@ -86,6 +88,8 @@
                             "Steps away from Canal Street Subway",
                             "Elevator Building",
                         ],
+                        neighborhood: "Harlem",
+                        rent: "$2500",
                     },
                     {
                         imgLink:
@@ -101,6 +105,8 @@
                             "Laundry on premises",
                             "Live-in super",
                         ],
+                        neighborhood: "Brighton Beach",
+                        rent: "$3500",
                     },
                     {
                         imgLink:
@@ -116,6 +122,8 @@
                             "Spacious living room ( top floor)",
                             "Pet friendly",
                         ],
+                        neighborhood: "East Village",
+                        rent: "$4000",
                     },
                     {
                         imgLink:
@@ -134,12 +142,14 @@
                             "Polished hardwood floors",
                             "THREE huge of closet space",
                         ],
+                        neighborhood: "Murray Hill",
+                        rent: "$3650",
                     },
                 ];
 
                 for (i = 0; i < apartment.length; i++) {
                     $("#card--container").append(`
-                    <div class="card" id="card" onClick="chgAddress('${apartment[i].address}', '${apartment[i].desc}','${apartment[i].features}', '${apartment[i].category}')" style="width: 25rem;">
+                    <div class="card" id="card" onClick="chgAddress('${apartment[i].address}', '${apartment[i].desc}','${apartment[i].features}', '${apartment[i].category}','${apartment[i].neighborhood}','${apartment[i].rent}')" style="width: 23rem;">
                         <img src=${apartment[i].imgLink} class="card-img-top" alt="...">
                         <div class="card-body">
                             <p class="card-text">${apartment[i].address}</p>
@@ -148,7 +158,14 @@
                 }
             });
 
-            function chgAddress(address, desc, features, category) {
+            function chgAddress(
+                address,
+                desc,
+                features,
+                category,
+                neighborhood,
+                rent,
+            ) {
                 console.log(features);
                 var res = features.split(",");
                 console.log("res", res);
@@ -156,6 +173,8 @@
                 $("#address").html(address);
                 $("#apt--category").html(category);
                 $("#card--address").html(address);
+                $("#apt--neighborhood").html(neighborhood);
+                $("#apt--rent").html(rent);
                 //empty the html before filling in with the list of strings
                 $("#apt--feature__list").html("");
                 for (i = 0; i < res.length; i++) {
@@ -167,19 +186,23 @@
     <body>
         <div class="outer--container">
             <div class="left--container">
-                <div style="width: 450px; margin-left: 1.5rem">
+                <div style="width: 400px; margin-left: 1.5rem">
                     <h1 class="address" id="address">New York City</h1>
                 </div>
                 <div class="card--container" id="card--container"></div>
             </div>
+            <!-- middle container -->
             <div class="middle--container">
-                <div class="webgl-content" style="background-color:green;">
+                <div class="webgl-content">
                     <div
                         id="unityContainer"
                         style="width: 650px; height: 675px; background-color: blue;"
                     ></div>
                     <div class="apt--details">
-                        <div class="card bg-light mb-3 apt--card">
+                        <div
+                            class="card bg-light mb-3 apt--card"
+                            style="border-radius:5px"
+                        >
                             <div
                                 class="card-header"
                                 id="card--address"
@@ -188,12 +211,14 @@
                                 W 145th St, New York, NY 10031
                             </div>
                             <div class="card-body">
-                                <h1 class="card-title">Brighton Beach</h1>
+                                <h1 class="card-title" id="apt--neighborhood">
+                                    Upper Manhattan
+                                </h1>
                                 <h5
                                     id="apt--category"
                                     style="color: rgba(148, 142, 142, 0.623)"
                                 >
-                                    1 BED, 1 BATH
+                                    STUDIO, 1 BATH
                                 </h5>
                                 <p class="card-text" id="apt--desc">
                                     More pictures coming This spacious one
@@ -229,8 +254,40 @@
                                 </div>
                             </div>
                         </div>
+                        <div
+                            class="card text-white bg-dark mb-3 apt--card"
+                            style="border-radius:5px; background-color: black !important"
+                        >
+                            <div class="card-body" style="padding: 1rem">
+                                <h5
+                                    class="card-title"
+                                    id="apt--rent"
+                                    style="padding-bottom: 0"
+                                >
+                                    $3150
+                                </h5>
+                                <p class="card-text">
+                                    NET EFFECTIVE RENT
+                                </p>
+                                <p
+                                    class="card-text"
+                                    style="color: rgba(180, 178, 178, 0.698)"
+                                >
+                                    PER MONTH
+                                </p>
+                            </div>
+                        </div>
                     </div>
+
                     <div class="footer" style="background-color: red"></div>
+                    <div
+                        class="middle--bottom"
+                        style="width:100%; border-top: 2px inset rgba(187, 187, 187, 0.63);"
+                    >
+                        <button type="button" class="btn btn-light">
+                            Light
+                        </button>
+                    </div>
                 </div>
             </div>
 
