@@ -165,5 +165,10 @@
 }
 
 .middle--bottom {
-    background-color: blue;
+    display: flex;
+    border-top: 2px inset rgba(187, 187, 187, 0.63);
+    position: sticky;
+    bottom: 0;
+    width: auto;
+    padding: 1rem 0;
 }
