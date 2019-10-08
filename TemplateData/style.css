@@ -91,10 +91,12 @@
 
 .left--container {
     background-color: rgba(245, 245, 245, 0.842);
+    width: 25%;
     overflow-y: scroll;
 }
 
 .middle--container {
+    width: 35%;
     height: auto;
     overflow-y: scroll;
 }
@@ -104,7 +106,7 @@
 }
 
 .right--container {
-    width: auto;
+    width: 40%;
     background-color: yellow;
 }
 
