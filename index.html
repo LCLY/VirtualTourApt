@@ -85,6 +85,8 @@
                         googleMap:
                             "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3019.150092334416!2d-73.9484125851742!3d40.82466677931982!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c2f67b7f7685c3%3A0x8f88968121aa771a!2sW%20145th%20St%2C%20New%20York%2C%20NY%2010031!5e0!3m2!1sen!2sus!4v1570261283622!5m2!1sen!2sus",
                         rentGraph: [1500, 1800, 2300, 1700, 2500, 1600],
+                        agent: "Steve Roger",
+                        phoneNum: "",
                     },
                     {
                         imgLink:
@@ -106,6 +108,7 @@
                         googleMap:
                             "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.0019074659563!2d-73.98788125032438!3d40.76198277922497!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25856b372f7a1%3A0xbafeeab5c1070648!2s250%20W%2050th%20St%2C%20New%20York%2C%20NY%2010019!5e0!3m2!1sen!2sus!4v1570575465939!5m2!1sen!2sus",
                         rentGraph: [2500, 2000, 3000, 1500, 1800, 3500],
+                        agent: "Tony Stark",
                     },
                     {
                         imgLink:
@@ -126,6 +129,7 @@
                         googleMap:
                             "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.453792080233!2d-73.98778155032487!3d40.752042879226124!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259aa4c0fef23%3A0x150b6a0c23de4a3c!2s66%20W%2038th%20St%2C%20New%20York%2C%20NY%2010018!5e0!3m2!1sen!2sus!4v1570575549603!5m2!1sen!2sus",
                         rentGraph: [2000, 1500, 1800, 2500, 1800, 1700],
+                        agent: "Bruce Banner",
                     },
 
                     {
@@ -147,6 +151,7 @@
                         googleMap:
                             "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3024.314502271106!2d-74.00783785032695!3d40.71109257923053!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a228f1aeb2f%3A0x952d8bed29f35511!2s8%20Spruce%20Street%2C%208%20Spruce%20St%2C%20New%20York%2C%20NY%2010038!5e0!3m2!1sen!2sus!4v1570575601433!5m2!1sen!2sus",
                         rentGraph: [2000, 1600, 1400, 1650, 1800, 2500],
+                        agent: "Clint Barton",
                     },
 
                     {
@@ -171,12 +176,13 @@
                         googleMap:
                             "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.8406851052996!2d-74.00894005032528!3d40.74353097922706!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259bf551ee62f%3A0x9805673bf80fbbff!2s450%20W%2017th%20St%2C%20New%20York%2C%20NY%2010011!5e0!3m2!1sen!2sus!4v1570575668991!5m2!1sen!2sus",
                         rentGraph: [2500, 2000, 1500, 1900, 2200, 3000],
+                        agent: "Natasha Romanoff",
                     },
                 ];
 
                 for (i = 0; i < apartment.length; i++) {
                     $("#card--container").append(`
-                    <div class="card" id="card" onClick="chgAddress('${apartment[i].address}', '${apartment[i].desc}','${apartment[i].features}', '${apartment[i].category}','${apartment[i].neighborhood}','${apartment[i].rent}','${apartment[i].googleMap}','${apartment[i].rentGraph}')" style=\"width: 20rem;\">
+                    <div class="card" id="card" onClick="chgAddress('${apartment[i].address}', '${apartment[i].desc}','${apartment[i].features}', '${apartment[i].category}','${apartment[i].neighborhood}','${apartment[i].rent}','${apartment[i].googleMap}','${apartment[i].rentGraph}','${apartment[i].agent}')" style=\"width: 20rem;\">
                         <img src=${apartment[i].imgLink} class="card-img-top" alt="...">
                         <div class="card-body">
                             <p class="card-text">${apartment[i].address}</p>
@@ -221,6 +227,7 @@
                 rent,
                 googleMap,
                 rentGraph,
+                agent,
             ) {
                 var res = features.split(",");
                 // console.log("res", res);
@@ -240,7 +247,7 @@
                     style="border:0;"
                     allowfullscreen=""
                 ></iframe>`);
-
+                $("#agentName").html(agent);
                 //empty the html before filling in with the list of strings
                 $("#apt--feature__list").html("");
                 for (i = 0; i < res.length; i++) {
@@ -468,7 +475,10 @@
                                     LISTING AGENT
                                 </h5>
                                 <div>
-                                    <h1 style="font-weight: bolder">
+                                    <h1
+                                        id="agentName"
+                                        style="font-weight: bolder"
+                                    >
                                         Steve Roger
                                     </h1>
                                 </div>
