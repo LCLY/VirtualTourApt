@@ -19,9 +19,11 @@
             integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
             crossorigin="anonymous"
         />
+
         <script src="TemplateData/UnityProgress.js"></script>
         <script src="Build/UnityLoader.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
         <script
             src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
             integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
@@ -37,6 +39,7 @@
             integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
             crossorigin="anonymous"
         ></script>
+
         <script>
             var unityInstance = UnityLoader.instantiate(
                 "unityContainer",
@@ -74,13 +77,14 @@
                             "Very spacious closets",
                             "Enjoy morning runs (or walks) on Brighton Beach Boardwalk across from the apartment!",
                             "Next to B and Q trains for express commute",
-                            "Various dining, shopping and entertainment options in the surrounding area",
-                            "Live-in super",
+                            "Various dining location with shopping and entertainment options in the surrounding area",
+                            "Washer/Dryer in unit",
                         ],
                         neighborhood: "Upper Manhattan",
                         rent: "$3150",
                         googleMap:
                             "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3019.150092334416!2d-73.9484125851742!3d40.82466677931982!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c2f67b7f7685c3%3A0x8f88968121aa771a!2sW%20145th%20St%2C%20New%20York%2C%20NY%2010031!5e0!3m2!1sen!2sus!4v1570261283622!5m2!1sen!2sus",
+                        rentGraph: [1500, 1800, 2300, 1700, 2500, 1600],
                     },
                     {
                         imgLink:
@@ -90,7 +94,7 @@
                         desc:
                             "Placed in the heart of the East Village, just steps from eclectic dining, cafes, boutique shops, and iconic Tompkins Square park. Transportation just a short walk away and Citi-bike on the same block. Brand new renovations and tons of natural light in this apartment.",
                         features: [
-                            " Queen Size Bedroom w/ Good natural light & Closet Space",
+                            "Queen Size Bedroom w/ Good natural light & Closet Space",
                             "Spacious Living Room w/ Window & Expose Brick",
                             "Open Kitchen w/ Island, Stainless Steel Appliances & Dishwasher",
                             "Renovated Marble Bathroom",
@@ -101,6 +105,7 @@
                         rent: "$2500",
                         googleMap:
                             "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.0019074659563!2d-73.98788125032438!3d40.76198277922497!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25856b372f7a1%3A0xbafeeab5c1070648!2s250%20W%2050th%20St%2C%20New%20York%2C%20NY%2010019!5e0!3m2!1sen!2sus!4v1570575465939!5m2!1sen!2sus",
+                        rentGraph: [2500, 2000, 3000, 1500, 1800, 3500],
                     },
                     {
                         imgLink:
@@ -120,6 +125,7 @@
                         rent: "$3500",
                         googleMap:
                             "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.453792080233!2d-73.98778155032487!3d40.752042879226124!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259aa4c0fef23%3A0x150b6a0c23de4a3c!2s66%20W%2038th%20St%2C%20New%20York%2C%20NY%2010018!5e0!3m2!1sen!2sus!4v1570575549603!5m2!1sen!2sus",
+                        rentGraph: [2000, 1500, 1800, 2500, 1800, 1700],
                     },
 
                     {
@@ -140,6 +146,7 @@
                         rent: "$4000",
                         googleMap:
                             "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3024.314502271106!2d-74.00783785032695!3d40.71109257923053!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a228f1aeb2f%3A0x952d8bed29f35511!2s8%20Spruce%20Street%2C%208%20Spruce%20St%2C%20New%20York%2C%20NY%2010038!5e0!3m2!1sen!2sus!4v1570575601433!5m2!1sen!2sus",
+                        rentGraph: [2000, 1600, 1400, 1650, 1800, 2500],
                     },
 
                     {
@@ -163,18 +170,46 @@
                         rent: "$3650",
                         googleMap:
                             "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.8406851052996!2d-74.00894005032528!3d40.74353097922706!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259bf551ee62f%3A0x9805673bf80fbbff!2s450%20W%2017th%20St%2C%20New%20York%2C%20NY%2010011!5e0!3m2!1sen!2sus!4v1570575668991!5m2!1sen!2sus",
+                        rentGraph: [2500, 2000, 1500, 1900, 2200, 3000],
                     },
                 ];
 
                 for (i = 0; i < apartment.length; i++) {
                     $("#card--container").append(`
-                    <div class="card" id="card" onClick="chgAddress('${apartment[i].address}', '${apartment[i].desc}','${apartment[i].features}', '${apartment[i].category}','${apartment[i].neighborhood}','${apartment[i].rent}','${apartment[i].googleMap}')" style=\"width: 20rem;\">
+                    <div class="card" id="card" onClick="chgAddress('${apartment[i].address}', '${apartment[i].desc}','${apartment[i].features}', '${apartment[i].category}','${apartment[i].neighborhood}','${apartment[i].rent}','${apartment[i].googleMap}','${apartment[i].rentGraph}')" style=\"width: 20rem;\">
                         <img src=${apartment[i].imgLink} class="card-img-top" alt="...">
                         <div class="card-body">
                             <p class="card-text">${apartment[i].address}</p>
                         </div>
                     </div>`);
                 }
+
+                var options = {
+                    exportEnabled: true,
+                    animationEnabled: true,
+                    title: {
+                        text: "",
+                    },
+                    axisY: {
+                        interlacedColor: "rgba(255, 255, 255, 0)",
+                        gridColor: "rgba(255, 255, 255, 0)",
+                    },
+                    data: [
+                        {
+                            type: "splineArea",
+                            color: "lightgrey",
+                            dataPoints: [
+                                { y: 1500 },
+                                { y: 1800 },
+                                { y: 2300 },
+                                { y: 1700 },
+                                { y: 2500 },
+                                { y: 1600 },
+                            ],
+                        },
+                    ],
+                };
+                $("#chartContainer").CanvasJSChart(options);
             });
 
             function chgAddress(
@@ -185,6 +220,7 @@
                 neighborhood,
                 rent,
                 googleMap,
+                rentGraph,
             ) {
                 var res = features.split(",");
                 // console.log("res", res);
@@ -194,7 +230,7 @@
                 $("#card--address").html(address);
                 $("#apt--neighborhood").html(neighborhood);
                 $("#apt--rent").html(rent);
-                $("#right--container").html(`  
+                $("#right--container").html(`
                 <iframe
                     id="i_frame"
                     src=${googleMap}
@@ -210,10 +246,41 @@
                 for (i = 0; i < res.length; i++) {
                     $("#apt--feature__list").append(`<li>${res[i]}</li>`);
                 }
+
+                var tempData = rentGraph.split(",");
+                console.log(tempData[0]);
+                var options = {
+                    exportEnabled: true,
+                    animationEnabled: true,
+                    title: {
+                        text: "",
+                    },
+                    axisY: {
+                        interlacedColor: "rgba(255, 255, 255, 0)",
+                        gridColor: "rgba(255, 255, 255, 0)",
+                    },
+                    data: [
+                        {
+                            type: "splineArea",
+                            color: "lightgrey",
+                            dataPoints: [
+                                { y: parseInt(tempData[0]) },
+                                { y: parseInt(tempData[1]) },
+                                { y: parseInt(tempData[2]) },
+                                { y: parseInt(tempData[3]) },
+                                { y: parseInt(tempData[4]) },
+                                { y: parseInt(tempData[5]) },
+                            ],
+                        },
+                    ],
+                };
+                $("#chartContainer").CanvasJSChart(options);
             }
         </script>
     </head>
     <body>
+        <script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
+        <script src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>
         <div class="outer--container">
             <div class="left--container">
                 <div
@@ -227,99 +294,198 @@
             </div>
             <!-- middle container -->
             <div class="middle--container">
-                <div>
-                    <div class="webgl-content">
+                <div class="webgl-content">
+                    <div
+                        id="unityContainer"
+                        style="position:relative; width: 100%; height: 500px; background-color: rgb(170, 170, 170);"
+                    ></div>
+                    <div class="apt--details">
                         <div
-                            id="unityContainer"
-                            style="position:relative; width: 100%; height: 500px; background-color: rgb(170, 170, 170);"
-                        ></div>
-                        <div class="apt--details">
+                            class="card bg-light mb-3 apt--card"
+                            style="border-radius:5px"
+                        >
                             <div
-                                class="card bg-light mb-3 apt--card"
-                                style="border-radius:5px"
+                                class="card-header"
+                                id="card--address"
+                                style="font-size: 2rem"
                             >
-                                <div
-                                    class="card-header"
-                                    id="card--address"
-                                    style="font-size: 2rem"
+                                W 145th St, New York, NY 10031
+                            </div>
+                            <div class="card-body">
+                                <h1 class="card-title" id="apt--neighborhood">
+                                    Upper Manhattan
+                                </h1>
+                                <h5
+                                    id="apt--category"
+                                    style="color: rgba(148, 142, 142, 0.623)"
                                 >
-                                    W 145th St, New York, NY 10031
-                                </div>
-                                <div class="card-body">
-                                    <h1
-                                        class="card-title"
-                                        id="apt--neighborhood"
-                                    >
-                                        Upper Manhattan
-                                    </h1>
-                                    <h5
-                                        id="apt--category"
-                                        style="color: rgba(148, 142, 142, 0.623)"
-                                    >
-                                        STUDIO, 1 BATH
-                                    </h5>
-                                    <p class="card-text" id="apt--desc">
-                                        More pictures coming This spacious one
-                                        bedroom provides an ideal NYC living
-                                        experience. This apartment is surrounded
-                                        by a lively neighborhood while being
-                                        conveniently located to all direct
-                                        subway lines. Pets allowed
-                                    </p>
-                                    <h6>Building Features:</h6>
-                                    <div
-                                        id="apt--feature"
-                                        style="margin-left: 1rem"
-                                    >
-                                        <ul id="apt--feature__list">
-                                            <li>Very spacious closets</li>
-                                            <li>
-                                                Enjoy morning runs (or walks) on
-                                                Brighton Beach Boardwalk across
-                                                from the apartment!
-                                            </li>
-                                            <li>
-                                                Next to B and Q trains for
-                                                express commute
-                                            </li>
-                                            <li>
-                                                Various dining, shopping and
-                                                entertainment options in the
-                                                surrounding area
-                                            </li>
-                                            <li>Live-in super</li>
-                                        </ul>
+                                    STUDIO, 1 BATH
+                                </h5>
+                                <p class="card-text" id="apt--desc">
+                                    More pictures coming This spacious one
+                                    bedroom provides an ideal NYC living
+                                    experience. This apartment is surrounded by
+                                    a lively neighborhood while being
+                                    conveniently located to all direct subway
+                                    lines. Pets allowed
+                                </p>
+                            </div>
+                        </div>
+                        <div
+                            class="card text-white bg-dark mb-3 apt--card"
+                            style="border-radius:5px; background-color: black !important"
+                        >
+                            <div class="card-body" style="padding: 1rem">
+                                <h5
+                                    class="card-title"
+                                    id="apt--rent"
+                                    style="padding-bottom: 0"
+                                >
+                                    $3150
+                                </h5>
+                                <p class="card-text">
+                                    NET EFFECTIVE RENT
+                                </p>
+                                <p
+                                    class="card-text"
+                                    style="color: rgba(180, 178, 178, 0.698)"
+                                >
+                                    PER MONTH
+                                </p>
+                            </div>
+                        </div>
+                        <!-- graph -->
+                        <div
+                            class="card mb-3 apt--card"
+                            style="border-radius:5px; height:auto"
+                        >
+                            <div class="card-body" style="padding: 1rem">
+                                <h3
+                                    class="card-title"
+                                    id="apt--rent"
+                                    style="padding-bottom: 0; font-size: 1.5rem"
+                                >
+                                    Price comparison
+                                </h3>
+                                <div
+                                    id="chartContainer"
+                                    style="height: 150px; width: 100%;"
+                                ></div>
+                            </div>
+                        </div>
+                        <!-- transportation -->
+                        <div
+                            class="card mb-3 apt--card"
+                            style="border-radius:5px; height:auto"
+                        >
+                            <div class="card-body" style="padding: 1rem">
+                                <h3
+                                    class="card-title"
+                                    id="apt--rent"
+                                    style="padding-bottom: 0; font-size: 1.5rem"
+                                >
+                                    Transportation
+                                </h3>
+                                <div class="bus--wrap">
+                                    <div>
+                                        <div
+                                            style="border-radius: 50%; background: red; width:2rem; height:2rem; color:white;text-align:center"
+                                        >
+                                            <h5
+                                                style="position:relative; top:0.2rem"
+                                            >
+                                                A
+                                            </h5>
+                                        </div>
+                                        <div style="margin-left:-1rem">
+                                            5 minutes
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div
+                                            style="border-radius: 50%; background: blue; width:2rem; height:2rem;color:white;text-align:center"
+                                        >
+                                            <h5
+                                                style="position:relative; top:0.2rem"
+                                            >
+                                                B
+                                            </h5>
+                                        </div>
+                                        <div style="margin-left:-1rem">
+                                            8 minutes
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <div
-                                class="card text-white bg-dark mb-3 apt--card"
-                                style="border-radius:5px; background-color: black !important"
-                            >
-                                <div class="card-body" style="padding: 1rem">
-                                    <h5
-                                        class="card-title"
-                                        id="apt--rent"
-                                        style="padding-bottom: 0"
-                                    >
-                                        $3150
-                                    </h5>
-                                    <p class="card-text">
-                                        NET EFFECTIVE RENT
-                                    </p>
-                                    <p
-                                        class="card-text"
-                                        style="color: rgba(180, 178, 178, 0.698)"
-                                    >
-                                        PER MONTH
-                                    </p>
+                        </div>
+                        <div
+                            class="card mb-3 apt--card"
+                            style="border-radius:5px; height:auto"
+                        >
+                            <div class="card-body" style="padding: 1rem">
+                                <h3
+                                    class="card-title"
+                                    id="apt--rent"
+                                    style="padding-bottom: 0; font-size: 1.5rem"
+                                >
+                                    Features
+                                </h3>
+                                <div
+                                    id="apt--feature"
+                                    style="margin-left: 1rem"
+                                >
+                                    <ul id="apt--feature__list">
+                                        <li>Very spacious closets</li>
+                                        <li>
+                                            Enjoy morning runs (or walks) on
+                                            Brighton Beach Boardwalk across from
+                                            the apartment!
+                                        </li>
+                                        <li>
+                                            Next to B and Q trains for express
+                                            commute
+                                        </li>
+                                        <li>
+                                            Various dining location with
+                                            shopping and entertainment options
+                                            in the surrounding area
+                                        </li>
+                                        <li>Washer/Dryer in unit</li>
+                                    </ul>
                                 </div>
                             </div>
                         </div>
-
-                        <!-- <div class="footer" style="background-color: red"></div> -->
+                        <div
+                            class="card bg-light mb-3 apt--card"
+                            style="border-radius:5px; height:auto"
+                        >
+                            <div class="card-body" style="padding: 1rem">
+                                <h5
+                                    class="card-title"
+                                    id="apt--rent"
+                                    style="padding-bottom: 0; font-size: 1rem"
+                                >
+                                    LISTING AGENT
+                                </h5>
+                                <div>
+                                    <h1 style="font-weight: bolder">
+                                        Steve Roger
+                                    </h1>
+                                </div>
+                                <div style="margin-top:0.5rem">
+                                    <h5
+                                        style="font-size: 1rem; color:rgba(117, 117, 117, 0.712)"
+                                    >
+                                        Some Agency. • (123) 456-7890
+                                    </h5>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+
+                    <!-- <div class="footer" style="background-color: red"></div> -->
                 </div>
+
                 <div class="middle--bottom">
                     <div>
                         <button
