@@ -19,9 +19,11 @@
             integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
             crossorigin="anonymous"
         />
+
         <script src="TemplateData/UnityProgress.js"></script>
         <script src="Build/UnityLoader.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
         <script
             src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
             integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
@@ -37,6 +39,7 @@
             integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
             crossorigin="anonymous"
         ></script>
+
         <script>
             var unityInstance = UnityLoader.instantiate(
                 "unityContainer",
@@ -175,6 +178,33 @@
                         </div>
                     </div>`);
                 }
+
+                var options = {
+                    exportEnabled: true,
+                    animationEnabled: true,
+                    title: {
+                        text: "",
+                    },
+                    axisY: {
+                        interlacedColor: "rgba(255, 255, 255, 0)",
+                        gridColor: "rgba(255, 255, 255, 0)",
+                    },
+                    data: [
+                        {
+                            type: "splineArea",
+                            color: "lightgrey",
+                            dataPoints: [
+                                { y: 1500 },
+                                { y: 1800 },
+                                { y: 2300 },
+                                { y: 1700 },
+                                { y: 2500 },
+                                { y: 1600 },
+                            ],
+                        },
+                    ],
+                };
+                $("#chartContainer").CanvasJSChart(options);
             });
 
             function chgAddress(
@@ -194,7 +224,7 @@
                 $("#card--address").html(address);
                 $("#apt--neighborhood").html(neighborhood);
                 $("#apt--rent").html(rent);
-                $("#right--container").html(`  
+                $("#right--container").html(`
                 <iframe
                     id="i_frame"
                     src=${googleMap}
@@ -214,6 +244,8 @@
         </script>
     </head>
     <body>
+        <script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
+        <script src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>
         <div class="outer--container">
             <div class="left--container">
                 <div
@@ -227,99 +259,157 @@
             </div>
             <!-- middle container -->
             <div class="middle--container">
-                <div>
-                    <div class="webgl-content">
+                <div class="webgl-content">
+                    <div
+                        id="unityContainer"
+                        style="position:relative; width: 100%; height: 500px; background-color: rgb(170, 170, 170);"
+                    ></div>
+                    <div class="apt--details">
                         <div
-                            id="unityContainer"
-                            style="position:relative; width: 100%; height: 500px; background-color: rgb(170, 170, 170);"
-                        ></div>
-                        <div class="apt--details">
+                            class="card bg-light mb-3 apt--card"
+                            style="border-radius:5px"
+                        >
                             <div
-                                class="card bg-light mb-3 apt--card"
-                                style="border-radius:5px"
+                                class="card-header"
+                                id="card--address"
+                                style="font-size: 2rem"
                             >
-                                <div
-                                    class="card-header"
-                                    id="card--address"
-                                    style="font-size: 2rem"
-                                >
-                                    W 145th St, New York, NY 10031
-                                </div>
-                                <div class="card-body">
-                                    <h1
-                                        class="card-title"
-                                        id="apt--neighborhood"
-                                    >
-                                        Upper Manhattan
-                                    </h1>
-                                    <h5
-                                        id="apt--category"
-                                        style="color: rgba(148, 142, 142, 0.623)"
-                                    >
-                                        STUDIO, 1 BATH
-                                    </h5>
-                                    <p class="card-text" id="apt--desc">
-                                        More pictures coming This spacious one
-                                        bedroom provides an ideal NYC living
-                                        experience. This apartment is surrounded
-                                        by a lively neighborhood while being
-                                        conveniently located to all direct
-                                        subway lines. Pets allowed
-                                    </p>
-                                    <h6>Building Features:</h6>
-                                    <div
-                                        id="apt--feature"
-                                        style="margin-left: 1rem"
-                                    >
-                                        <ul id="apt--feature__list">
-                                            <li>Very spacious closets</li>
-                                            <li>
-                                                Enjoy morning runs (or walks) on
-                                                Brighton Beach Boardwalk across
-                                                from the apartment!
-                                            </li>
-                                            <li>
-                                                Next to B and Q trains for
-                                                express commute
-                                            </li>
-                                            <li>
-                                                Various dining, shopping and
-                                                entertainment options in the
-                                                surrounding area
-                                            </li>
-                                            <li>Live-in super</li>
-                                        </ul>
-                                    </div>
-                                </div>
+                                W 145th St, New York, NY 10031
                             </div>
-                            <div
-                                class="card text-white bg-dark mb-3 apt--card"
-                                style="border-radius:5px; background-color: black !important"
-                            >
-                                <div class="card-body" style="padding: 1rem">
-                                    <h5
-                                        class="card-title"
-                                        id="apt--rent"
-                                        style="padding-bottom: 0"
-                                    >
-                                        $3150
-                                    </h5>
-                                    <p class="card-text">
-                                        NET EFFECTIVE RENT
-                                    </p>
-                                    <p
-                                        class="card-text"
-                                        style="color: rgba(180, 178, 178, 0.698)"
-                                    >
-                                        PER MONTH
-                                    </p>
+                            <div class="card-body">
+                                <h1 class="card-title" id="apt--neighborhood">
+                                    Upper Manhattan
+                                </h1>
+                                <h5
+                                    id="apt--category"
+                                    style="color: rgba(148, 142, 142, 0.623)"
+                                >
+                                    STUDIO, 1 BATH
+                                </h5>
+                                <p class="card-text" id="apt--desc">
+                                    More pictures coming This spacious one
+                                    bedroom provides an ideal NYC living
+                                    experience. This apartment is surrounded by
+                                    a lively neighborhood while being
+                                    conveniently located to all direct subway
+                                    lines. Pets allowed
+                                </p>
+                                <h6>Building Features:</h6>
+                                <div
+                                    id="apt--feature"
+                                    style="margin-left: 1rem"
+                                >
+                                    <ul id="apt--feature__list">
+                                        <li>Very spacious closets</li>
+                                        <li>
+                                            Enjoy morning runs (or walks) on
+                                            Brighton Beach Boardwalk across from
+                                            the apartment!
+                                        </li>
+                                        <li>
+                                            Next to B and Q trains for express
+                                            commute
+                                        </li>
+                                        <li>
+                                            Various dining, shopping and
+                                            entertainment options in the
+                                            surrounding area
+                                        </li>
+                                        <li>Live-in super</li>
+                                    </ul>
                                 </div>
                             </div>
                         </div>
-
-                        <!-- <div class="footer" style="background-color: red"></div> -->
+                        <div
+                            class="card text-white bg-dark mb-3 apt--card"
+                            style="border-radius:5px; background-color: black !important"
+                        >
+                            <div class="card-body" style="padding: 1rem">
+                                <h5
+                                    class="card-title"
+                                    id="apt--rent"
+                                    style="padding-bottom: 0"
+                                >
+                                    $3150
+                                </h5>
+                                <p class="card-text">
+                                    NET EFFECTIVE RENT
+                                </p>
+                                <p
+                                    class="card-text"
+                                    style="color: rgba(180, 178, 178, 0.698)"
+                                >
+                                    PER MONTH
+                                </p>
+                            </div>
+                        </div>
+                        <div
+                            class="card mb-3 apt--card"
+                            style="border-radius:5px; height:auto"
+                        >
+                            <div class="card-body" style="padding: 1rem">
+                                <h3
+                                    class="card-title"
+                                    id="apt--rent"
+                                    style="padding-bottom: 0; font-size: 1.5rem"
+                                >
+                                    Price comparison
+                                </h3>
+                                <div
+                                    id="chartContainer"
+                                    style="height: 150px; width: 100%;"
+                                ></div>
+                            </div>
+                        </div>
+                        <div
+                            class="card mb-3 apt--card"
+                            style="border-radius:5px; height:auto"
+                        >
+                            <div class="card-body" style="padding: 1rem">
+                                <h3
+                                    class="card-title"
+                                    id="apt--rent"
+                                    style="padding-bottom: 0; font-size: 1.5rem"
+                                >
+                                    Transportation
+                                </h3>
+                                <div class="bus--wrap">
+                                    <div>
+                                        <div
+                                            style="border-radius: 50%; background: red; width:2rem; height:2rem; color:white;text-align:center"
+                                        >
+                                            <h5
+                                                style="position:relative; top:0.2rem"
+                                            >
+                                                A
+                                            </h5>
+                                        </div>
+                                        <div style="margin-left:-1rem">
+                                            5 minutes
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div
+                                            style="border-radius: 50%; background: blue; width:2rem; height:2rem;color:white;text-align:center"
+                                        >
+                                            <h5
+                                                style="position:relative; top:0.2rem"
+                                            >
+                                                B
+                                            </h5>
+                                        </div>
+                                        <div style="margin-left:-1rem">
+                                            8 minutes
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+
+                    <!-- <div class="footer" style="background-color: red"></div> -->
                 </div>
+
                 <div class="middle--bottom">
                     <div>
                         <button
