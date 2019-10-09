@@ -258,7 +258,7 @@
                 }
 
                 var tempData = rentGraph.split(",");
-                console.log(tempData[0]);
+                // console.log(tempData[0]);
                 var options = {
                     exportEnabled: true,
                     animationEnabled: true,
@@ -289,7 +289,7 @@
         </script>
     </head>
     <body>
-        <script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
+        <!-- <script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script> -->
         <script src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>
         <div class="outer--container">
             <!-- Button trigger modal -->
@@ -318,7 +318,7 @@
                                 class="modal-title"
                                 id="exampleModalCenterTitle"
                             >
-                                Modal title
+                                Virtual Tour Demo
                             </h5>
                             <button
                                 type="button"
@@ -330,7 +330,21 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            ...
+                            <h6>Purpose</h6>
+                            A very simple demo to showcase a 360 degree virtual
+                            tour feature of apartments and this is how I imagine
+                            it looks like.
+                            <br />
+                            <h6 style="margin-top:1rem">How it's built</h6>
+                            Built using Unity3D with a 360 degree image and a
+                            custom shader, compiled into WebGL.
+                            <br />
+                            <h6 style="margin-top:1rem">Note:</h6>
+                            The layout of this website is referring to an
+                            apartment rental website
+                            <a href="https://keyo.com/" target="_blank">
+                                keyo.com</a
+                            >, check them out!
                         </div>
                         <div class="modal-footer">
                             <button
@@ -339,9 +353,6 @@
                                 data-dismiss="modal"
                             >
                                 Close
-                            </button>
-                            <button type="button" class="btn btn-primary">
-                                Save changes
                             </button>
                         </div>
                     </div>
@@ -592,6 +603,15 @@
                     allowfullscreen=""
                 ></iframe>
             </div>
+            <button
+                style="position: absolute; right:1rem; top: 2rem; z-index:100; width: 6rem; height:3.5rem; overflow: auto"
+                type="button"
+                class="btn btn-primary"
+                data-toggle="modal"
+                data-target="#exampleModalCenter"
+            >
+                <i class="fas fa-info-circle" style="font-size:2rem"></i>
+            </button>
         </div>
     </body>
 </html>
