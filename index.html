@@ -79,6 +79,8 @@
                         ],
                         neighborhood: "Upper Manhattan",
                         rent: "$3150",
+                        googleMap:
+                            "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3019.150092334416!2d-73.9484125851742!3d40.82466677931982!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c2f67b7f7685c3%3A0x8f88968121aa771a!2sW%20145th%20St%2C%20New%20York%2C%20NY%2010031!5e0!3m2!1sen!2sus!4v1570261283622!5m2!1sen!2sus",
                     },
                     {
                         imgLink:
@@ -97,6 +99,8 @@
                         ],
                         neighborhood: "Harlem",
                         rent: "$2500",
+                        googleMap:
+                            "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.0019074659563!2d-73.98788125032438!3d40.76198277922497!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25856b372f7a1%3A0xbafeeab5c1070648!2s250%20W%2050th%20St%2C%20New%20York%2C%20NY%2010019!5e0!3m2!1sen!2sus!4v1570575465939!5m2!1sen!2sus",
                     },
                     {
                         imgLink:
@@ -114,7 +118,10 @@
                         ],
                         neighborhood: "Brighton Beach",
                         rent: "$3500",
+                        googleMap:
+                            "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.453792080233!2d-73.98778155032487!3d40.752042879226124!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259aa4c0fef23%3A0x150b6a0c23de4a3c!2s66%20W%2038th%20St%2C%20New%20York%2C%20NY%2010018!5e0!3m2!1sen!2sus!4v1570575549603!5m2!1sen!2sus",
                     },
+
                     {
                         imgLink:
                             "https://pix10.agoda.net/hotelImages/167/167578/167578_15020923560025224264.jpg?s=1024x768",
@@ -131,7 +138,10 @@
                         ],
                         neighborhood: "East Village",
                         rent: "$4000",
+                        googleMap:
+                            "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3024.314502271106!2d-74.00783785032695!3d40.71109257923053!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a228f1aeb2f%3A0x952d8bed29f35511!2s8%20Spruce%20Street%2C%208%20Spruce%20St%2C%20New%20York%2C%20NY%2010038!5e0!3m2!1sen!2sus!4v1570575601433!5m2!1sen!2sus",
                     },
+
                     {
                         imgLink:
                             "https://www.apartmentlovin.com/wp-content/uploads/2018/10/River-Stone-Apartment-Kiev8-1.jpg",
@@ -151,12 +161,14 @@
                         ],
                         neighborhood: "Murray Hill",
                         rent: "$3650",
+                        googleMap:
+                            "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.8406851052996!2d-74.00894005032528!3d40.74353097922706!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259bf551ee62f%3A0x9805673bf80fbbff!2s450%20W%2017th%20St%2C%20New%20York%2C%20NY%2010011!5e0!3m2!1sen!2sus!4v1570575668991!5m2!1sen!2sus",
                     },
                 ];
 
                 for (i = 0; i < apartment.length; i++) {
                     $("#card--container").append(`
-                    <div class="card" id="card" onClick="chgAddress('${apartment[i].address}', '${apartment[i].desc}','${apartment[i].features}', '${apartment[i].category}','${apartment[i].neighborhood}','${apartment[i].rent}')" style="width: 20rem;">
+                    <div class="card" id="card" onClick="chgAddress('${apartment[i].address}', '${apartment[i].desc}','${apartment[i].features}', '${apartment[i].category}','${apartment[i].neighborhood}','${apartment[i].rent}','${apartment[i].googleMap}')" style=\"width: 20rem;\">
                         <img src=${apartment[i].imgLink} class="card-img-top" alt="...">
                         <div class="card-body">
                             <p class="card-text">${apartment[i].address}</p>
@@ -172,16 +184,27 @@
                 category,
                 neighborhood,
                 rent,
+                googleMap,
             ) {
-                console.log(features);
                 var res = features.split(",");
-                console.log("res", res);
+                // console.log("res", res);
                 $("#apt--desc").html(desc);
                 $("#address").html(address);
                 $("#apt--category").html(category);
                 $("#card--address").html(address);
                 $("#apt--neighborhood").html(neighborhood);
                 $("#apt--rent").html(rent);
+                $("#right--container").html(`  
+                <iframe
+                    id="i_frame"
+                    src=${googleMap}
+                    width="100%"
+                    height="100%"
+                    frameborder="0"
+                    style="border:0;"
+                    allowfullscreen=""
+                ></iframe>`);
+
                 //empty the html before filling in with the list of strings
                 $("#apt--feature__list").html("");
                 for (i = 0; i < res.length; i++) {
@@ -193,100 +216,109 @@
     <body>
         <div class="outer--container">
             <div class="left--container">
-                <div style="width: 350px; margin-left: 1.5rem">
-                    <h1 class="address" id="address">New York City</h1>
+                <div
+                    style="display:flex;  width: 350px; margin-left: auto; margin-right: auto"
+                >
+                    <div style="justify-content:center">
+                        <h1 class="address" id="address">New York City</h1>
+                    </div>
                 </div>
                 <div class="card--container" id="card--container"></div>
             </div>
             <!-- middle container -->
             <div class="middle--container">
-                <div class="webgl-content">
-                    <div
-                        id="unityContainer"
-                        style="width: 100%; height: 750px; background-color: blue;"
-                    ></div>
-                    <div class="apt--details">
+                <div>
+                    <div class="webgl-content">
                         <div
-                            class="card bg-light mb-3 apt--card"
-                            style="border-radius:5px"
-                        >
+                            id="unityContainer"
+                            style="position:relative; width: 100%; height: 500px; background-color: rgb(170, 170, 170);"
+                        ></div>
+                        <div class="apt--details">
                             <div
-                                class="card-header"
-                                id="card--address"
-                                style="font-size: 2rem"
+                                class="card bg-light mb-3 apt--card"
+                                style="border-radius:5px"
                             >
-                                W 145th St, New York, NY 10031
-                            </div>
-                            <div class="card-body">
-                                <h1 class="card-title" id="apt--neighborhood">
-                                    Upper Manhattan
-                                </h1>
-                                <h5
-                                    id="apt--category"
-                                    style="color: rgba(148, 142, 142, 0.623)"
-                                >
-                                    STUDIO, 1 BATH
-                                </h5>
-                                <p class="card-text" id="apt--desc">
-                                    More pictures coming This spacious one
-                                    bedroom provides an ideal NYC living
-                                    experience. This apartment is surrounded by
-                                    a lively neighborhood while being
-                                    conveniently located to all direct subway
-                                    lines. Pets allowed
-                                </p>
-                                <h6>Building Features:</h6>
                                 <div
-                                    id="apt--feature"
-                                    style="margin-left: 1rem"
+                                    class="card-header"
+                                    id="card--address"
+                                    style="font-size: 2rem"
                                 >
-                                    <ul id="apt--feature__list">
-                                        <li>Very spacious closets</li>
-                                        <li>
-                                            Enjoy morning runs (or walks) on
-                                            Brighton Beach Boardwalk across from
-                                            the apartment!
-                                        </li>
-                                        <li>
-                                            Next to B and Q trains for express
-                                            commute
-                                        </li>
-                                        <li>
-                                            Various dining, shopping and
-                                            entertainment options in the
-                                            surrounding area
-                                        </li>
-                                        <li>Live-in super</li>
-                                    </ul>
+                                    W 145th St, New York, NY 10031
+                                </div>
+                                <div class="card-body">
+                                    <h1
+                                        class="card-title"
+                                        id="apt--neighborhood"
+                                    >
+                                        Upper Manhattan
+                                    </h1>
+                                    <h5
+                                        id="apt--category"
+                                        style="color: rgba(148, 142, 142, 0.623)"
+                                    >
+                                        STUDIO, 1 BATH
+                                    </h5>
+                                    <p class="card-text" id="apt--desc">
+                                        More pictures coming This spacious one
+                                        bedroom provides an ideal NYC living
+                                        experience. This apartment is surrounded
+                                        by a lively neighborhood while being
+                                        conveniently located to all direct
+                                        subway lines. Pets allowed
+                                    </p>
+                                    <h6>Building Features:</h6>
+                                    <div
+                                        id="apt--feature"
+                                        style="margin-left: 1rem"
+                                    >
+                                        <ul id="apt--feature__list">
+                                            <li>Very spacious closets</li>
+                                            <li>
+                                                Enjoy morning runs (or walks) on
+                                                Brighton Beach Boardwalk across
+                                                from the apartment!
+                                            </li>
+                                            <li>
+                                                Next to B and Q trains for
+                                                express commute
+                                            </li>
+                                            <li>
+                                                Various dining, shopping and
+                                                entertainment options in the
+                                                surrounding area
+                                            </li>
+                                            <li>Live-in super</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="card text-white bg-dark mb-3 apt--card"
+                                style="border-radius:5px; background-color: black !important"
+                            >
+                                <div class="card-body" style="padding: 1rem">
+                                    <h5
+                                        class="card-title"
+                                        id="apt--rent"
+                                        style="padding-bottom: 0"
+                                    >
+                                        $3150
+                                    </h5>
+                                    <p class="card-text">
+                                        NET EFFECTIVE RENT
+                                    </p>
+                                    <p
+                                        class="card-text"
+                                        style="color: rgba(180, 178, 178, 0.698)"
+                                    >
+                                        PER MONTH
+                                    </p>
                                 </div>
                             </div>
                         </div>
-                        <div
-                            class="card text-white bg-dark mb-3 apt--card"
-                            style="border-radius:5px; background-color: black !important"
-                        >
-                            <div class="card-body" style="padding: 1rem">
-                                <h5
-                                    class="card-title"
-                                    id="apt--rent"
-                                    style="padding-bottom: 0"
-                                >
-                                    $3150
-                                </h5>
-                                <p class="card-text">
-                                    NET EFFECTIVE RENT
-                                </p>
-                                <p
-                                    class="card-text"
-                                    style="color: rgba(180, 178, 178, 0.698)"
-                                >
-                                    PER MONTH
-                                </p>
-                            </div>
-                        </div>
-                    </div>
 
-                    <div class="footer" style="background-color: red"></div>
+                        <!-- <div class="footer" style="background-color: red"></div> -->
+                    </div>
                 </div>
                 <div class="middle--bottom">
                     <div>
@@ -315,8 +347,9 @@
                 </div>
             </div>
 
-            <div class="right--container">
+            <div class="right--container" id="right--container">
                 <iframe
+                    id="i_frame"
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3019.150092334416!2d-73.9484125851742!3d40.82466677931982!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c2f67b7f7685c3%3A0x8f88968121aa771a!2sW%20145th%20St%2C%20New%20York%2C%20NY%2010031!5e0!3m2!1sen!2sus!4v1570261283622!5m2!1sen!2sus"
                     width="100%"
                     height="100%"
